@@ -67,7 +67,7 @@ app.set('view cache', true);
 app.use('/', express.static('dist/browser', { index: false, maxAge: 30 * 86400000 }));
 
 // All regular routes use the Universal engine
-app.get('', (req, res) => {
+app.get('*', (req, res) => {
     res.render('index', {
         req: req,
         res: res,
@@ -78,7 +78,7 @@ app.get('', (req, res) => {
 app.get('/env', (req, res) => {
   res.json(process.env);
 })
-  
+
 app.listen(PORT,() => {
   console.log(`we are serving the site for you at http://localhost:${PORT}!`);
 });
