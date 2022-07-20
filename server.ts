@@ -64,7 +64,10 @@ app.use(compression());
 app.set('view engine', 'html');
 app.set('views', 'dist/browser');
 app.set('view cache', true);
-app.use('*.*', express.static('dist/browser', { index: false, maxAge: 30 * 86400000 }));
+// app.use('*.*', express.static('dist/browser', { index: false, maxAge: 30 * 86400000 }));
+
+//routing
+// app.use()
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
