@@ -1,6 +1,6 @@
 import { isPlatformServer } from '@angular/common';
 import { Component, Injector, Inject, PLATFORM_ID } from '@angular/core';
-import { TransferState, makeStateKey } from '@angular/platform-browser';
+import { TransferState, makeStateKey, Meta } from '@angular/platform-browser';
 const configKey = makeStateKey('CONFIG');
 
 
@@ -12,6 +12,7 @@ const configKey = makeStateKey('CONFIG');
 export class AppComponent {
   public title: string;
   constructor(
+    private metaService: Meta,
     private injector: Injector,
     private state: TransferState,
     @Inject(PLATFORM_ID) private platformid: object
@@ -24,6 +25,9 @@ export class AppComponent {
     } else {
       console.log(this.state.get(configKey, undefined as any));
     }
+
+    setTimeout(()=>{  this.metaService.updateTag({ property: "og:description", content: "Leadrat Microsite"})
+    this.metaService.updateTag({property: 'og:image', content: 'http://leadrat.com/wp-content/uploads/2022/06/Properties.png'})}, 10000)
 
   }
 }
